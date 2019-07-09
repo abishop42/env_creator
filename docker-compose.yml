@@ -4,7 +4,7 @@ services:
                 build: ./sample_web
                 container_name: sampleweb
                 links:
-                        - sampledb
+                        - "sampledb:database"
                 ports:
                         - 5000:5000
         sampledb:
@@ -17,4 +17,4 @@ services:
                        - ./data/init.sql:/docker-entrypoint-initdb.d/1-schema.sql
                        - ./data/data.sql:/docker-entrypoint-initdb.d/2-data.sql
                  ports:
-                         - 5543:5234
+                         - 5243:5234
