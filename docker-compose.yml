@@ -1,0 +1,20 @@
+version: "3"
+services:
+        sampleweb:
+                build: ./sample_web
+                container_name: sampleweb
+                links:
+                        - sampledb
+                ports:
+                        - 5000:5000
+        sampledb:
+                 image: postgres
+                 container_name: sampledb
+                 environment:
+                        POSTGRES_USER: db1
+                        POSTGRES_PASSWORD: password123
+                 volumes:
+                       - ./data/init.sql:/docker-entrypoint-initdb.d/1-schema.sql
+                       - ./data/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+                 ports:
+                         - 5543:5234
