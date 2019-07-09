@@ -6,5 +6,5 @@ WORKDIR /app
 RUN pip install --no-cache-dir -r requirements.txt
 ENV FLASK_APP=app.py
 EXPOSE 5000
-RUN flask run
-
+ENTRYPOINT [ "python" ]
+CMD [ "app.py" ]
